@@ -4,98 +4,140 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Compta</title>
+	<link rel="stylesheet" href="../app/scss/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-
-
 </head>
 
 <body ng-app="myApp">
 
-	<!--<div ng-controller="userCtrl">
-
-		<table border="1" width="60%">
-
-			<tr ng-repeat="x in myData | orderBy: 'username' ">
-				<td>{{ x.username }}</td>
-				<td>{{ x.usergroup}}</td>
-				<td>{{ x.usercolor }}</td>
-			</tr>
-		</table>
-		<!--<ul>
+	<nav>
+		<ul>
+			<li>Account friends</li>
 			<li>
+				<button class="button">je créer un compte</button>
+			</li>
+			<li><a herf="#">Informations Générale</a>
+		</ul>
+	</nav>
+	<br>
+	<table>
 
-				{{ x.Id + " " + x.Montant + " " + x.Payeur + " " + x.Concernes + " " + x.Date + " " + x.nbConcernes + " " + x.usergroup + " " + x.Description }}
+		<!--<ul>
+		<li>Dépenses</li>
+		<li><a herf="#"></a>j'ajoute des participants</li>
+			<li>
+				<a herf="#"></a>j'ajoute des dépenses</a>
+			</li>
+		</ul>-->
+		<ul>
+			<li>liste des dépenses</li>
+			<li class="qui">Vous étes authentifié comme : Jules </li>
+		</ul>
+		<hr>
+		<br>
 
+		<tr>
+			<th>Qui a payé</th>
+			<th>Combien</th>
+			<th>Pourquoi</th>
+			<th>Couleur</th>
+			<th>Date</th>
+			<th>Pour qui</th>
+
+		</tr>
+		<tr>
+			<td>jules</td>
+			<td>100 ¢</td>
+			<td>repas</td>
+			<td>Rouge</td>
+			<td>13/10/2016</td>
+			<td>zora</td>
+
+
+
+			<td>
+
+				<button class="button">Supprimer</button>
+				<button class="button">Modifier</button>
+			</td>
+
+
+
+		</tr>
+		<tr>
+			<td>jules</td>
+			<td>50¢</td>
+			<td>repas</td>
+			<td>Bleu</td>
+			<td>01/10/2016</td>
+			<td>jeson</td>
+			<td>
+				<button class="button">Supprimer</button>
+				<button class="button">Modifier</button>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>
+				<button class="button">Supprimer</button>
+				<button class="button">Modifier</button>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>
+				<button class="button">Supprimer</button>
+				<button class="button">Modifier</button>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>
+				<button class="button">Supprimer</button>
+				<button class="button">Modifier</button>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>
+				<button class="button">Supprimer</button>
+				<button class="button">Modifier</button>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<hr>
+
+	<footer>
+		<ul>
+			<li>
+				<button class="button">Ajouter des participants</button>
+			</li>
+			<li>
+				<button class="button">Ajouter des dépenses</button>
+			</li>
+			<li>
+				<button class="button"> Qui doit quoi à qui</button>
 			</li>
 		</ul>
+	</footer>
 
-	</div>
-
-	<script>
-		var app = angular.module('myApp', []);
-		app.controller('userCtrl', function ($scope, $http) {
-			$http.get("users.json").then(function (response) {
-				$scope.myData = response.data.records;
-			});
-		});
-	</script>-->
-	<div ng-controller="userCtrl">
-
-		<table>
-			<tr ng-repeat="x in myData">
-				<td>{{ x.username }}</td>
-				<td>{{ x.usergroup}}</td>
-				<td>{{ x.usercolor }}</td>
-
-			</tr>
-		</table>
-
-
-
-		<script>
-			var app = angular.module('myApp', []);
-			app.controller('userCtrl', function ($scope, $http) {
-				$http.get("users.json").then(function (response) {
-					$scope.myData = response.data.records;
-				});
-			});
-		</script>
-		<div ng-controller="depensesCtrl">
-
-			<ul>
-				<li ng-repeat="x in myData">
-
-					{{ x.Id + " " + x.Montant + " " + x.Payeur + " " + x.Concernes + " " + x.Date + " " + x.nbConcernes + " " + x.usergroup + " " + x.Description }}
-
-				</li>
-			</ul>
-
-		</div>
-	</div>
-
-	<script>
-		app.controller('depensesCtrl', function ($scope, $http) {
-			$http.get("depenses.json").then(function (response) {
-				$scope.myData = response.data.records;
-			});
-		});
-	</script>
-
-
-
-
-
-	<!--<div ng-app="myApp" ng-controller="myCtrl">
-		Name:
-		<input ng-model="user">
-	</div>
-
-	<script>
-		var app = angular.module('myApp', []);
-		app.controller('myCtrl', function ($scope) {
-			$scope.user = "";
-		});
-	</script>-->
 </body>
 
 </html>
