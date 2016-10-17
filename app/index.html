@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Compta</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+
+</head>
+
+<body ng-app="myApp">
+
+	<!--<div ng-controller="userCtrl">
+
+		<table border="1" width="60%">
+
+			<tr ng-repeat="x in myData | orderBy: 'username' ">
+				<td>{{ x.username }}</td>
+				<td>{{ x.usergroup}}</td>
+				<td>{{ x.usercolor }}</td>
+			</tr>
+		</table>
+		<!--<ul>
+			<li>
+
+				{{ x.Id + " " + x.Montant + " " + x.Payeur + " " + x.Concernes + " " + x.Date + " " + x.nbConcernes + " " + x.usergroup + " " + x.Description }}
+
+			</li>
+		</ul>
+
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('userCtrl', function ($scope, $http) {
+			$http.get("users.json").then(function (response) {
+				$scope.myData = response.data.records;
+			});
+		});
+	</script>-->
+	<div ng-controller="userCtrl">
+
+		<table>
+			<tr ng-repeat="x in myData">
+				<td>{{ x.username }}</td>
+				<td>{{ x.usergroup}}</td>
+				<td>{{ x.usercolor }}</td>
+
+			</tr>
+		</table>
+
+
+
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller('userCtrl', function ($scope, $http) {
+				$http.get("users.json").then(function (response) {
+					$scope.myData = response.data.records;
+				});
+			});
+		</script>
+		<div ng-controller="depensesCtrl">
+
+			<ul>
+				<li ng-repeat="x in myData">
+
+					{{ x.Id + " " + x.Montant + " " + x.Payeur + " " + x.Concernes + " " + x.Date + " " + x.nbConcernes + " " + x.usergroup + " " + x.Description }}
+
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+	<script>
+		app.controller('depensesCtrl', function ($scope, $http) {
+			$http.get("depenses.json").then(function (response) {
+				$scope.myData = response.data.records;
+			});
+		});
+	</script>
+
+
+
+
+
+	<!--<div ng-app="myApp" ng-controller="myCtrl">
+		Name:
+		<input ng-model="user">
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function ($scope) {
+			$scope.user = "";
+		});
+	</script>-->
+</body>
+
+</html>

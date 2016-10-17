@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Compta</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+
+</head>
+
+<body ng-app="myApp">
+	<div ng-controller="datCtrl">
+		<p>Date = {{ today | date }}</p>
+
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('datCtrl', function ($scope) {
+			$scope.today = new Date();
+		});
+	</script>
+	<div ng-controller="myCtrl">
+
+		<p>Il est exactement:</p>
+
+		<h1>{{theTime}}</h1>
+
+	</div>
+
+
+	<script>
+		app.controller('myCtrl', function ($scope, $interval) {
+			$scope.theTime = new Date().toLocaleTimeString();
+			$interval(function () {
+				$scope.theTime = new Date().toLocaleTimeString();
+			}, 1000);
+		});
+	</script>
+
+	<div ng-controller="userCtrl">
+
+		<table>
+			<tr ng-repeat="x in myData">
+				<td>{{ x.username }}</td>
+				<td>{{ x.usergroup}}</td>
+				<td>{{ x.usercolor }}</td>
+
+			</tr>
+		</table>
+
+	</div>
+
+	<script>
+		app.controller('userCtrl', function ($scope, $http) {
+			$http.get("users.json").then(function (response) {
+				$scope.myData = response.data.records;
+			});
+		});
+	</script>
+	<div ng-controller="depensesCtrl">
+
+		<ul>
+			<li ng-repeat="x in myData">
+
+				{{ x.Id + " " + x.Montant + " " + x.Payeur + " " + x.Concernes + " " + x.Date + " " + x.nbConcernes + " " + x.usergroup + " " + x.Description }}
+
+			</li>
+		</ul>
+
+	</div>
+
+	<script>
+		app.controller('depensesCtrl', function ($scope, $http) {
+			$http.get("depenses.json").then(function (response) {
+				$scope.myData = response.data.records;
+			});
+		});
+	</script>
+
+	<div ng-controller="calculController">
+
+
+		<h1>Comptabilité en ligne</h1>
+		<span>je calcule mes dépenses:</span>
+		<input ng-model="expression" type="text" ng-change="calcul()" />
+		<span>Resultat: {{result}}</span>
+	</div>
+
+	<script>
+		app.controller('calculController', function ($scope) {
+			$scope.expression = "";
+			$scope.result = "";
+			$scope.calcul = function () {
+				try {
+					$scope.result = eval($scope.expression);
+				} catch (e) {
+					$scope.result = "";
+				}
+			}
+		});
+	</script>
+
+
+	<!--<div ng-app="myApp" ng-controller="myCtrl">
+Name: <input ng-model="user">
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.user = "";
+});
+</script>-->
+</body>
+
+</html>
