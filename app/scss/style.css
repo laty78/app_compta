@@ -1,11 +1,19 @@
 body {
-  /*background-image: url(../images/Background-Image-513-2.jpg);*/ }
+  background-image: url(../images/monkey-black-background-photography-1920x1080.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  color: white; }
 
 nav {
-  width: 100%;
-  height: 50px;
-  background-color: #55634C;
-  line-height: 35px; }
+  background-color: #B39700; }
+  nav ul {
+    height: 60px;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px; }
   nav li {
     display: inline;
     margin: 15px; }
@@ -20,30 +28,44 @@ li {
 .qui {
   float: right; }
 
-table {
-  width: 80%;
-  margin-left: 110px;
-  background-color: brown;
-  border: 1px solid black; }
-  table th,
-  table td {
-    padding: 5px;
-    text-align: center;
-    border-left: 1px; }
-  table button {
-    float: right;
-    width: 65px;
-    font-size: 10px;
-    background-color: blue; }
+section {
+  height: 400px;
+  padding: 35px; }
+  section table {
+    border: medium solid #6495ed;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: 110px;
+    /*background-color: brown;*/
+    /*border: 1px solid black;*/ }
+    section table th {
+      font-size: 14px;
+      font-family: monospace;
+      border: thin solid #6495ed;
+      background-color: #B39700;
+      width: 55px; }
+    section table td {
+      font-family: sans-serif;
+      border: thin solid #6495ed;
+      opacity: 0.8;
+      text-align: center;
+      width: 55px; }
+    section table th,
+    section table td {
+      padding: 5px;
+      text-align: center; }
+    section table button {
+      float: right;
+      width: 65px;
+      font-size: 11px;
+      color: black; }
 
 footer {
-  width: 100%;
-  height: 50px;
-  background-color: #55634C; }
-  footer li {
-    display: inline;
-    float: left;
-    line-height: 15px;
-    margin: 15px; }
+  padding-top: 17px;
+  height: 40px;
+  background-color: #B39700;
+  text-align: center; }
+  footer .bouton {
+    display: inline; }
 
 /*# sourceMappingURL=style.css.map */
