@@ -1,9 +1,9 @@
 body {
-  background-image: url(../images/monkey-black-background-photography-1920x1080.jpg);
+  /*background-image: url(../images/monkey-black-background-photography-1920x1080.jpg);*/
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
-  color: white; }
+  /*color: white;*/ }
 
 nav {
   background-color: #B39700; }
