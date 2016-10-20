@@ -1,4 +1,5 @@
 var app = angular.module('myApp', []);
+
 app.controller('userCtrl', function ($scope, $http) {
 	$http.get("Data/users.json").then(function (response) {
 		$scope.myData = response.data.records;
@@ -8,7 +9,7 @@ app.controller('userCtrl', function ($scope, $http) {
 
 app.controller('depensesCtrl', function ($scope, $http) {
 	$http.get("Data/depenses.json").then(function (response) {
-		$scope.myData = response.data.records;
+		$scope.depenses = response.data.records;
 	});
 });
 
@@ -39,7 +40,7 @@ window.onclick = function (event) {
 }*/
 
 
-function Controleur($scope) {
+function Controler($scope) {
 	$scope.message = '';
 	$scope.utilisateurs = [];
 	$scope.user = {

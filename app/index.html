@@ -23,7 +23,7 @@
 	</nav>
 	<br>
 	<section>
-		<table ng-controller="depensesCtrl">
+		<table ng-controller="userCtrl">
 
 			<!--<ul>
 		<li>Dépenses</li>
@@ -53,8 +53,8 @@
 			</tr>
 
 
-			<!--<tr ng-repeat="x in myData">
-<!--<td>{{ x.Id}}</td>
+			<tr ng-repeat="x in myData">
+				<!--<td>{{ x.Id}}</td>-->
 				<td>{{ x.username }}</td>
 				<td>{{ x.usergroup}}</td>
 				<td>{{ x.usercolor }}</td>
@@ -64,90 +64,93 @@
 					<button class="button">Supprimer</button>
 					<button class="button">Modifier</button>
 				</td>
-			</tr>-->
-
-			<tr ng-repeat="y in myData">
-
-				<!--<td>{{ y.Id}}</td>-->
-				<td>{{ y.Montant}}</td>
-				<td>{{ y.Payeur}}</td>
-				<td>{{y.usergroup}}</td>
-				<!--<td>{{ y.Concernes}}</td>-->
-				<td>{{ y.Date }}</td>
-				<!--<td>{{ y.nbConcernes}}</td>-->
-				<td>{{ y.Description }}</td>
-				<td>
-
-					<button class="button">Supprimer</button>
-					<button class="button">Modifier</button>
-				</td>
-
 			</tr>
+
+			<div ng="depensesCtrl">
+				<tr ng-repeat="y in depenses">
+
+					<!--<td>{{ y.Id}}</td>-->
+					<td>{{ y.Montant}}</td>
+					<td>{{ y.Payeur}}</td>
+					<td>{{y.usergroup}}</td>
+					<td>{{ y.Concernes}}</td>
+					<td>{{ y.Date }}</td>
+					<td>{{ y.nbConcernes}}</td>
+					<td>{{ y.Description }}</td>
+					<td>
+
+						<button class="button">Supprimer</button>
+						<button class="button">Modifier</button>
+					</td>
+
+				</tr>
+			</div>
 
 		</table>
 	</section>
 
 	<!-- modal utilisateur-->
-	<div ng-controller="Controleur">
-		<style type="text/css">
-			.ng-invalid {
-				border-color: #B94A48;
-			}
-			
-			.ng-valid {
-				border-color: #468847;
-			}
-		</style>
-		<h1>Ajout d'utilisateurs</h1>
-		<form name="ajoutUtilisateur" ng-submit="soumission(ajoutUtilisateur.$valid)">
-			<div class="form-group">
-				<label for="nom">Nom :</label>
-				<input type="text" class="form-control" id="nom" placeholder="Entrez le nom" ng-model="user.nom" required>
-			</div>
-			<div class="form-group">
-				<label for="prenom">Prénom :</label>
-				<input type="text" class="form-control" id="prenom" placeholder="Entrez le prénom" ng-model="user.prenom" required>
-			</div>
-			<div class="form-group">
-				<label>Rôle : </label>
-				<label class="radio-inline">
-					<input type="radio" id="actif" value="Actif" ng-model="user.role"> Actif
-				</label>
-				<label class="radio-inline">
-					<input type="radio" id="membre" value="Membre" ng-model="user.role"> Membre
-				</label>
-			</div>
-			<div class="alert alert-danger" ng-show="message">{{message}}</div>
-			<button class="btn btn-default" type="submit">Ajouter</button>
-		</form>
-		<table class="table table-bordered">
-			<caption>Utilisateurs</caption>
-			<tr>
-				<th>Nom</th>
 
-				<th>Prénom</th>
-				<th>Rôle</th>
-			</tr>
-			<tr ng-repeat="utilisateur in utilisateurs">
-				<td>{{utilisateur.nom | uppercase}}</td>
-				<td>{{utilisateur.prenom}}</td>
-				<td>{{utilisateur.role}}</td>
-			</tr>
-		</table>
-		<br>
-		<hr>
-		<br>
+	<br>
+	<hr>
+	<br>
 
-		<footer>
-			<div class="bouton">
-				<button class="myModal">Ajouter des participants</button>
+	<footer>
+		<div class="bouton">
+			<button class="myModal">Ajouter des participants</button>
+			<div ng-controller="Controleur">
+				<style type="text/css">
+					.ng-invalid {
+						border-color: #B94A48;
+					}
+					
+					.ng-valid {
+						border-color: #468847;
+					}
+				</style>
+				<h1>Ajout d'utilisateurs</h1>
+				<form name="ajoutUtilisateur" ng-submit="soumission(ajoutUtilisateur.$valid)">
+					<div class="form-group">
+						<label for="nom">Nom :</label>
+						<input type="text" class="form-control" id="nom" placeholder="Entrez le nom" ng-model="user.nom" required>
+					</div>
+					<div class="form-group">
+						<label for="prenom">Prénom :</label>
+						<input type="text" class="form-control" id="prenom" placeholder="Entrez le prénom" ng-model="user.prenom" required>
+					</div>
+					<div class="form-group">
+						<label>Rôle : </label>
+						<label class="radio-inline">
+							<input type="radio" id="actif" value="Actif" ng-model="user.role"> Actif
+						</label>
+						<label class="radio-inline">
+							<input type="radio" id="membre" value="Membre" ng-model="user.role"> Membre
+						</label>
+					</div>
+					<div class="alert alert-danger" ng-show="message">{{message}}</div>
+					<button class="btn btn-default" type="submit">Ajouter</button>
+				</form>
+				<table class="table table-bordered">
+					<caption>Utilisateurs</caption>
+					<tr>
+						<th>Nom</th>
+
+						<th>Prénom</th>
+						<th>Rôle</th>
+					</tr>
+					<tr ng-repeat="utilisateur in utilisateurs">
+						<td>{{utilisateur.nom | uppercase}}</td>
+						<td>{{utilisateur.prenom}}</td>
+						<td>{{utilisateur.role}}</td>
+					</tr>
+				</table>
 
 				<button class="myModal">Ajouter des dépenses</button>
 
 				<button class="myModal"> Qui doit quoi à qui</button>
 
 			</div>
-		</footer>
+	</footer>
 
 </body>
 
