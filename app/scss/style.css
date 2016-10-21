@@ -29,7 +29,7 @@ li {
   float: right; }
 
 section {
-  height: 400px;
+  height: 500px;
   padding: 35px; }
   section table {
     border: medium solid #6495ed;
@@ -58,14 +58,163 @@ section {
       float: right;
       width: 65px;
       font-size: 11px;
-      color: black; }
+      color: black;
+      display: none; }
 
 footer {
   padding-top: 17px;
   height: 40px;
   background-color: #B39700;
-  text-align: center; }
+  text-align: center;
+  /* The Modal (background) */
+  /* Modal Content/Box */
+  /* The Close Button */
+  /* Close button on hover */
+  /* Add Zoom Animation */ }
   footer .bouton {
     display: inline; }
+  footer .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: black;
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Black w/ opacity */
+    padding-top: 60px;
+    color: white; }
+  footer .modal-content {
+    background-color: #fefefe;
+    margin: 5px auto;
+    /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */ }
+  footer .close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold; }
+  footer .close:hover,
+  footer .close:focus {
+    color: red;
+    cursor: pointer; }
+  footer .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s; }
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0); }
+  to {
+    -webkit-transform: scale(1); } }
+@keyframes animatezoom {
+  from {
+    transform: scale(0); }
+  to {
+    transform: scale(1); } }
+  footer table {
+    border: medium solid #6495ed;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: 110px;
+    /*background-color: brown;
+    border: 1px solid black;*/ }
+    footer table th {
+      font-size: 14px;
+      font-family: monospace;
+      border: thin solid #6495ed;
+      background-color: #B39700;
+      width: 55px; }
+    footer table td {
+      font-family: sans-serif;
+      border: thin solid #6495ed;
+      opacity: 0.8;
+      text-align: center;
+      width: 55px; }
+    footer table th,
+    footer table td {
+      padding: 5px;
+      text-align: center; }
+    footer table button {
+      float: right;
+      width: 65px;
+      font-size: 11px;
+      color: black;
+      display: none; }
+
+.pagelogin {
+  /* The Modal (background) */
+  /* Modal Content/Box */
+  /* The Close Button */
+  /* Close button on hover */
+  /* Add Zoom Animation */ }
+  .pagelogin .app {
+    height: 457px; }
+  .pagelogin .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: black;
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    padding-top: 60px; }
+  .pagelogin .modal-content {
+    background-color: #fefefe;
+    margin: 5px auto;
+    /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */ }
+  .pagelogin .close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold; }
+  .pagelogin .close:hover,
+  .pagelogin .close:focus {
+    color: red;
+    cursor: pointer; }
+  .pagelogin .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s; }
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0); }
+  to {
+    -webkit-transform: scale(1); } }
+@keyframes animatezoom {
+  from {
+    transform: scale(0); }
+  to {
+    transform: scale(1); } }
 
 /*# sourceMappingURL=style.css.map */
