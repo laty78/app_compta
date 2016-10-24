@@ -11,20 +11,68 @@
 	</script>
 </head>
 
-<body ng-app="myApp">
-
+<body ng-app="myApp" ng-controller="userCtrl">
 	<nav>
 		<ul>
 			<li>Account friends</li>
 			<li>
-				<button class="myModal">je créer un groupe</button>
+
+				<button onclick="document.getElementById('id02').style.display='block'">Je créer un groupe</button>
+				<!-- Button to open the modal login form -->
+
+
+				<!-- The Modal -->
+				<div id="id02" class="modal">
+					<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+					<div id="id02" class="mongroupe">
+						<style type="text/css">
+							.ng-invalid {
+								border-color: #B94A48;
+							}
+							
+							.ng-valid {
+								border-color: #468847;
+							}
+						</style>
+						<h1>Mon groupe</h1>
+
+						<!---Formulaire de contact-->
+
+						<form name="ajoutUtilisateur" ng-submit="soumission(ajoutUtilisateur.$valid)">
+							<div class="form-group">
+								<label for="intitule">Intitulé :</label>
+								<input type="text" class="form-control" id="intitule" placeholder="Entrez un intitule" ng-model="user.intitule" required>
+							</div>
+							<div class="form-group">
+								<label for="date">Date :</label>
+								<input type="text" class="form-control" id="date" placeholder="date" ng-model="user.date" required>
+							</div>
+							<div class="form-group">
+								<label for="participant">Participant :</label>
+								<input type="text" class="form-control" id="participant" placeholder="Entrez un participant" ng-model="user.participant" required>
+							</div>
+							<br>
+							<br>
+
+							<div class="group">
+								<p>{{usergroup}}</p> {{date}} {{concernes}}
+								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
+								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
+								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
+								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
+								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
+								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
+							</div>
+					</div>
+					</form>
 			</li>
 			<li><a herf="#">Informations Générale</a>
 		</ul>
 	</nav>
 	<br>
-	<section>
-		<table ng-controller="userCtrl">
+	<section ng-controller="depensesCtrl">
+
+		<table>
 
 
 			<ul>
@@ -36,17 +84,21 @@
 			<br>
 
 			<tr>
-				<th>Qui</th>
-				<th>Prénom</th>
-				<th>Groupe</th>
-				<th>Couleur</th>
-
-
+				<th>Qui a payé</th>
+				<th>Combien</th>
+				<th>Pourquoi</th>
+				<th>Date</th>
+				<th>Pour qui</th>
+				<th>Pour moi</th>
+				<th></th>
 			</tr>
 
 
-			<tr ng-repeat="x in myData">
-				<td>{{ x.Id}}</td>
+			<tr ng-repeat="x in users">
+				<!--<td>{{ y.Payeur}}</td>
+				<td>{{ y.Montant}}</td>
+				<td>{{ y.Description }}</td>
+				<td>{{ y.Date }}</td>-->
 				<td>{{ x.username }}</td>
 				<td>{{ x.usergroup}}</td>
 				<td>{{ x.usercolor }}</td>
@@ -56,12 +108,13 @@
 					<button class="button">Supprimer</button>
 					<button class="button">Modifier</button>
 				</td>
-			</tr>
+			</tr>-->
 
 		</table>
-		<!--<table ng-controller="depensesCtrl">
+		<table>
 
 			<tr>
+				<th>id</th>
 				<th>Montant</th>
 				<th>Payeur</th>
 				<th>Groupe</th>
@@ -73,27 +126,27 @@
 			</tr>
 
 
-			<div ng="depensesCtrl">
-				<tr ng-repeat="y in depenses">
 
-<td>{{ y.Id}}</td>
-					<td>{{ y.Montant}}</td>
-					<td>{{ y.Payeur}}</td>
-					<td>{{y.usergroup}}</td>
-					<td>{{ y.Concernes}}</td>
-					<td>{{ y.Date }}</td>
-					<td>{{ y.nbConcernes}}</td>
-					<td>{{ y.Description }}</td>
-					<td>
+			<tr ng-repeat="y in depenses">
 
-						<button class="button">Supprimer</button>
-						<button class="button">Modifier</button>
-					</td>
+				<td>{{ y.Id}}</td>
+				<td>{{ y.Montant}}</td>
+				<td>{{aUsers[y.Payeur]}}</td>
+				<td>{{y.usergroup}}</td>
+				<td>{{ y.Concernes}}</td>
+				<td>{{ y.Date }}</td>
+				<td>{{ y.nbConcernes}}</td>
+				<td>{{ y.Description }}</td>
+				<td>
 
-				</tr>
-			</div>
+					<button class="button">Supprimer</button>
+					<button class="button">Modifier</button>
+				</td>
 
-		</table>-->
+			</tr>
+
+
+		</table>
 	</section>
 
 	<!-- modal utilisateur-->
@@ -104,18 +157,18 @@
 
 	<footer>
 		<button onclick="document.getElementById('id01').style.display='block'">Ajouter des participants</button>
-		<button class="myModal">Ajouter des dépenses</button>
+
 
 		<button class="myModal"> Qui doit quoi à qui</button>
+
 
 		<!-- Button to open the modal login form -->
 
 
-		<!-- The Modal -->
+		<!-- The Modal participant -->
 		<div id="id01" class="modal">
 			<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-
-			<div id="id01" ng-controller="Controleur">
+			<div id="id01" class="modalutilisateur" ng-controller="userPart">
 				<style type="text/css">
 					.ng-invalid {
 						border-color: #B94A48;
@@ -131,45 +184,63 @@
 
 				<form name="ajoutUtilisateur" ng-submit="soumission(ajoutUtilisateur.$valid)">
 					<div class="form-group">
-						<label for="nom">Nom :</label>
-						<input type="text" class="form-control" id="nom" placeholder="Entrez le nom" ng-model="user.nom" required>
+						<label for="participant">Participant :</label>
+						<input type="text" class="form-control" id="participant" placeholder="Entrez un participant" ng-model="user.participant" required>
 					</div>
 					<br>
 					<div class="form-group">
-						<label for="prenom">Prénom :</label>
-						<input type="text" class="form-control" id="prenom" placeholder="Entrez le prénom" ng-model="user.prenom" required>
+						<label for="groupe">Groupe :</label>
+						<input type="text" class="form-control" id="groupe" placeholder="Entrez un groupe" ng-model="user.groupe" required>
 					</div>
 					<br>
 					<div class="form-group">
-						<label>Rôle : </label>
+						<label>Couleur : </label>
 						<label class="radio-inline">
-							<input type="radio" id="actif" value="Actif" ng-model="user.role"> Actif
+							<input type="radio" id="actif" value="Rouge" ng-model="user.couleur"> Rouge
 						</label>
 						<label class="radio-inline">
-							<input type="radio" id="membre" value="Membre" ng-model="user.role"> Membre
+							<input type="radio" id="membre" value="Bleu" ng-model="user.couleur"> bleu
+						</label>
+						<label class="radio-inline">
+							<input type="radio" id="membre" value="Jaune" ng-model="user.couleur"> Jaune
+						</label>
+						<label class="radio-inline">
+							<input type="radio" id="membre" value="Vert" ng-model="user.couleur"> Vert
+						</label>
+						<label class="radio-inline">
+							<input type="radio" id="membre" value="Turquoise" ng-model="user.couleur"> Turquoise
 						</label>
 					</div>
 					<!--<div class="alert alert-danger" ng-show="message">{{message}}</div>-->
-
-					<button onclick="document.getElementById('tyf').style.display='block'" type="submit">Ajouter</button>
+					<br>
+					<br>
+					<button class="btn btn-default" type="submit">Ajouter</button>
+					<!--<button onclick="document.getElementById('tyf').style.display='block'" type="submit">Ajouter</button>-->
 				</form>
-
+				<br>
+				<br>
 				<!---Tableau-->
-				<table id="tyf">
-					<caption>Utilisateurs</caption>
+				<table class="table table-bordered">
+					<caption>Participants</caption>
 					<tr>
-						<th>Nom</th>
+						<th>Participant</th>
 
-						<th>Prénom</th>
-						<th>Rôle</th>
+						<th>Groupe</th>
+						<th>Couleur</th>
 					</tr>
+
 					<tr ng-repeat="utilisateur in utilisateurs">
-						<td>{{utilisateur.nom | uppercase}}</td>
-						<td>{{utilisateur.prenom}}</td>
-						<td>{{utilisateur.role}}</td>
+						<td>{{utilisateur.participant | uppercase}}</td>
+						<td>{{utilisateur.depense}}</td>
+						<td>{{utilisateur.couleur}}</td>
 					</tr>
 				</table>
-
+				<br>
+				<br>
+				<br>
+				<button class="myModal">Ajouter des dépenses</button>
+				<button class="myModal">Modifier</button>
+				<button class="myModal">Enregistrer</button>
 				<!-- Modal Content -->
 				<!--<form class="modal-content animate" action="action_page.php">
 			
@@ -190,8 +261,6 @@
 				</div>
 			</form>-->
 			</div>
-
-
 
 
 

@@ -1,0 +1,102 @@
+<DOCTYPE! html>
+	<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Compta</title>
+		<link rel="stylesheet" href="../app/scss/style.css">
+		<script src="lib/angular/angular.js"></script>
+		<script src="compta.js"></script>
+		<script src="script.js">
+		</script>
+	</head>
+
+	<body ng-app="myApp">
+
+		<--!<div id="id01" class="modalutilisateur" ng-controller="Controleur">-->
+			<style type="text/css">
+				.ng-invalid {
+					border-color: #B94A48;
+				}
+				
+				.ng-valid {
+					border-color: #468847;
+				}
+			</style>
+			<h1>Ajout d'utilisateurs</h1>
+
+			<!---Formulaire de contact-->
+
+			<form name="ajoutUtilisateur" ng-submit="soumission(ajoutUtilisateur.$valid)">
+				<div class="form-group">
+					<label for="participant">Participant :</label>
+					<input type="text" class="form-control" id="participant" placeholder="Entrez un participant" ng-model="user.participant" required>
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="depense">Ajouter une dépense :</label>
+					<input type="text" class="form-control" id="depense" placeholder="Entrez une depense" ng-model="user.depense" required>
+				</div>
+				<br>
+				<div class="form-group">
+					<label>Couleur : </label>
+					<label class="radio-inline">
+						<input type="radio" id="actif" value="Rouge" ng-model="user.couleur"> Rouge
+					</label>
+					<label class="radio-inline">
+						<input type="radio" id="membre" value="Bleu" ng-model="user.couleur"> bleu
+					</label>
+					<label class="radio-inline">
+						<input type="radio" id="membre" value="Jaune" ng-model="user.couleur"> Jaune
+					</label>
+					<label class="radio-inline">
+						<input type="radio" id="membre" value="Vert" ng-model="user.couleur"> Vert
+					</label>
+					<label class="radio-inline">
+						<input type="radio" id="membre" value="Turquoise" ng-model="user.couleur"> Turquoise
+					</label>
+				</div>
+				<!--<div class="alert alert-danger" ng-show="message">{{message}}</div>-->
+
+				<button onclick="document.getElementById('tyf').style.display='block'" type="submit">Ajouter</button>
+			</form>
+
+			<!---Tableau-->
+			<table id="tyf">
+				<caption>Utilisateurs</caption>
+				<tr>
+					<th>Participant</th>
+
+					<th>Dépense</th>
+					<th>Couleur</th>
+				</tr>
+				<tr ng-repeat="utilisateur in utilisateurs">
+					<td>{{utilisateur.participant | uppercase}}</td>
+					<td>{{utilisateur.depense}}</td>
+					<td>{{utilisateur.couleur}}</td>
+				</tr>
+			</table>
+			<button class="myModal">Ajouter des dépenses</button>
+			<!-- Modal Content -->
+			<!--<form class="modal-content animate" action="action_page.php">
+			
+
+				<div class="container">
+					<label><b>Username</b></label>
+					<input type="text" placeholder="Enter Username" name="uname" required>
+
+					<label><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="psw" required>
+
+					<button type="submit">Login</button>
+					<input type="checkbox" checked="checked"> Remember me
+				</div>
+				<div class="container" style="background-color:#f1f1f1">
+					<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+					<span class="psw">Forgot <a href="#">password?</a></span>
+				</div>
+			</form>-->
+			</div>
+	</body>
+
+	</html>

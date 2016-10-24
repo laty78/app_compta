@@ -2,7 +2,12 @@ var app = angular.module('myApp', []);
 
 app.controller('userCtrl', function ($scope, $http) {
 	$http.get("Data/users.json").then(function (response) {
-		$scope.myData = response.data.records;
+		$scope.users = response.data.records;
+		$scope.aUsers = [];
+		//Generating array aUsers with structure [id => username]
+		for ($user in $scope.users) {
+			$scope.aUsers[$scope.users[$user].Id] = $scope.users[$user].username;
+		}
 	});
 });
 
@@ -12,6 +17,13 @@ app.controller('depensesCtrl', function ($scope, $http) {
 		$scope.depenses = response.data.records;
 	});
 });
+
+
+
+app.controller('datCtrl', function ($scope) {
+	$scope.today = new Date();
+});
+
 
 // Get the modal
 /*var modal = document.getElementById('myModal');
@@ -40,21 +52,21 @@ window.onclick = function (event) {
 }*/
 
 
-function Controler($scope) {
+function userPart($scope) {
 	$scope.message = '';
 	$scope.utilisateurs = [];
 	$scope.user = {
-		nom: '',
-		prenom: '',
-		role: 'Membre'
+		participant: '',
+		depense: '',
+		couleur: ''
 	};
 	$scope.soumission = function (valid) {
 		if (valid) {
 			$scope.utilisateurs.push($scope.user);
 			$scope.user = {
-				nom: '',
-				prenom: '',
-				role: 'Membre'
+				participant: '',
+				depense: '',
+				couleur: ''
 			};
 		} else {
 			$scope.messageClass = 'alert-danger';
@@ -62,3 +74,36 @@ function Controler($scope) {
 		}
 	};
 }
+
+/*var MyFirstApp = angular.module('MyFirstApp', []);MyFirstApp.controller('depensesCtrl', function($scope, $http, $rootScope) {    $http({
+        method:'GET',
+        url : 'elements/json/depense.json'
+    }).then(function (response) {
+        $scope.depenses = response.data.records;
+    });
+});MyFirstApp.controller('usersCtrl', function($scope, $http) {
+    $http({
+        method:'GET',
+        url : 'elements/json/users.json'
+    }).then(function (response) {
+        $scope.users = response.data.records;
+        console.log(response.data.records);
+        $scope.aUsers = [];
+        //Generating array aUsers with structure [id => username]
+        for($user in $scope.users){
+            $scope.aUsers[$scope.users[$user].Id] = $scope.users[$user].username;
+        }
+    });
+});
+3:08 <body ng-controller="usersCtrl">        <div ng-controller="depensesCtrl">
+           <h1>Liste des utilisateurs</h1>
+           <ul>
+               <li ng-repeat="user in users">
+                   {{user.username}}
+               </li>
+           </ul>            <h1>Liste des payeurs</h1>
+           <ul>
+               <li ng-repeat="depense in depenses">{{aUsers[depense.Payeur]}}</li>
+               
+           </ul>
+        </div>*/
