@@ -1,13 +1,17 @@
 body {
 	/*background-image: url(../images/monkey-black-background-photography-1920x1080.jpg);*/
-	background-repeat: no-repeat;
-	background-size: cover;
+	/*background-repeat: no-repeat;
+	background-size: cover;*/
 	margin: 0;
+	background-color: rgb(3, 9, 1);
+	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.9);
 	/*color: white;*/
 }
 
 nav {
-	background-color: #B39700;
+	background-color: red;
+	opacity: 0.6;
 	ul {
 		height: 60px;
 		margin: 0;
@@ -18,7 +22,9 @@ nav {
 	}
 	li {
 		display: inline;
-		margin: 15px;
+		margin: 20px;
+		margin-top: 15px;
+		font-size: 28px;
 		/* The Modal (background) */
 		.modal {
 			display: none;
@@ -29,25 +35,26 @@ nav {
 			/* Sit on top */
 			left: 0;
 			top: 0;
-			width: 100%;
+			width: 60%;
 			/* Full width */
-			height: 60%;
+			height: 70%;
 			/* Full height */
 			overflow: auto;
 			/* Enable scroll if needed */
-			background-color: rgb(0, 0, 0);
+			background-color: rgb(3, 5, 1);
 			/* Fallback color */
 			background-color: rgba(0, 0, 0, 0.8);
 			/* Black w/ opacity */
 			padding-top: 60px;
 			color: white;
+			border-radius: 250px;
 		}
 		/* Modal Content/Box */
 		.modal-content {
 			background-color: #fefefe;
 			margin: 5px auto;
 			/* 15% from the top and centered */
-			border: 1px solid #888;
+			border: 5px solid #888;
 			width: 80%;
 			/* Could be more or less, depending on screen size */
 		}
@@ -55,8 +62,8 @@ nav {
 		.close {
 			/* Position it in the top right corner outside of the modal */
 			position: absolute;
-			right: 25px;
-			top: 0;
+			margin-left: 550px;
+			bottom: 0;
 			color: #000;
 			font-size: 35px;
 			font-weight: bold;
@@ -66,6 +73,19 @@ nav {
 		.close:focus {
 			color: red;
 			cursor: pointer;
+		}
+		h1 {
+			text-align: center;
+		}
+		form {
+			text-align: center;
+		}
+		.closebtn {
+			margin-left: 150px;
+		}
+		.btn {
+			text-align: center;
+			margin-right: 600px;
 		}
 		/* Add Zoom Animation */
 		.animate {
@@ -94,12 +114,44 @@ nav {
 			margin: 20px;
 		}
 		.groupe {
-			width: 170px;
+			background-color: red;
+			opacity: 0.5;
+			color: black;
+			border-bottom-left-radius: 250px;
+			border-bottom-right-radius: 250px;
+			border-top-left-radius: 55px;
+			border-top-right-radius: 55px;
+			/*width: 170px;
 			height: 200px;
 			border: 2pt solid black;
-			margin: 10px;
+			margin: 150px;
+			margin-bottom: 150px;
 			display: inline-block;
-		
+			border-radius: 150px;
+			padding-bottom: 25px;
+			padding-left: 200px;
+			padding-right: 200px;*/
+		}
+		.nom {
+			width: 60px;
+			margin-top: 35px;
+			margin-left: 150px;
+			height: 25px;
+			margin-bottom: 35px;
+			font-size: 18px;
+		}
+		.date {
+			width: 60px;
+			margin-left: 150px;
+			height: 25px;
+			margin-bottom: 35px;
+			font-size: 18px;
+		}
+		.participant {
+			width: 60px;
+			margin-left: 150px;
+			height: 50px;
+			font-size: 18px;
 		}
 	}
 	button,
@@ -118,7 +170,7 @@ li {
 }
 
 section {
-	height: 500px;
+	height: 400px;
 	padding: 35px;
 	table {
 		border: medium solid #6495ed;
@@ -131,7 +183,8 @@ section {
 			font-size: 14px;
 			font-family: monospace;
 			border: thin solid #6495ed;
-			background-color: #B39700;
+			background-color: red;
+			opacity: 0.6;
 			width: 55px;
 		}
 		td {
@@ -159,7 +212,8 @@ section {
 footer {
 	padding-top: 17px;
 	height: 40px;
-	background-color: #B39700;
+	background-color: red;
+	opacity: 0.6;
 	text-align: center;
 	.bouton {
 		display: inline;

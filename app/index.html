@@ -25,15 +25,7 @@
 				<div id="id02" class="modal">
 					<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
 					<div id="id02" class="mongroupe">
-						<style type="text/css">
-							.ng-invalid {
-								border-color: #B94A48;
-							}
-							
-							.ng-valid {
-								border-color: #468847;
-							}
-						</style>
+
 						<h1>Mon groupe</h1>
 
 						<!---Formulaire de contact-->
@@ -53,15 +45,19 @@
 							</div>
 							<br>
 							<br>
-
+							<button class="btn btn-default" type="submit">Ajouter</button>
+							<br>
 							<div class="group">
-								<p>{{usergroup}}</p> {{date}} {{concernes}}
+
+								<div class="groupe">
+									<p class="nom">Groupe:{{groupe.usergroup}}</p>
+									<p class="date">Date:{{groupe.Date}}</p>
+									<p class="participant"> Participants:{{groupe.Concernes}}</p><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
+								<!--<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
 								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
 								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
 								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
-								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
-								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
-								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>
+								<div class="groupe"><span class="closebtn" onclick="this.parentElement.style.display='none'">X</span></div>-->
 							</div>
 					</div>
 					</form>
@@ -133,7 +129,7 @@
 				<td>{{ y.Montant}}</td>
 				<td>{{aUsers[y.Payeur]}}</td>
 				<td>{{y.usergroup}}</td>
-				<td>{{ y.Concernes}}</td>
+				<td>{{aConcernesFinal[y.Id]}}</td>
 				<td>{{ y.Date }}</td>
 				<td>{{ y.nbConcernes}}</td>
 				<td>{{ y.Description }}</td>
@@ -168,16 +164,8 @@
 		<!-- The Modal participant -->
 		<div id="id01" class="modal">
 			<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-			<div id="id01" class="modalutilisateur" ng-controller="userPart">
-				<style type="text/css">
-					.ng-invalid {
-						border-color: #B94A48;
-					}
-					
-					.ng-valid {
-						border-color: #468847;
-					}
-				</style>
+			<div id="id01" class="modalutilisateur">
+
 				<h1>Ajout d'utilisateurs</h1>
 
 				<!---Formulaire de contact-->
@@ -238,98 +226,75 @@
 				<br>
 				<br>
 				<br>
-				<button class="myModal">Ajouter des dépenses</button>
+
+
+				<button onclick="document.getElementById('id03').style.display='block'">Ajouter une dépense</button>
+
+
+				<button class="myModal"> Qui doit quoi à qui</button>
+
 				<button class="myModal">Modifier</button>
 				<button class="myModal">Enregistrer</button>
-				<!-- Modal Content -->
-				<!--<form class="modal-content animate" action="action_page.php">
-			
 
-				<div class="container">
-					<label><b>Username</b></label>
-					<input type="text" placeholder="Enter Username" name="uname" required>
 
-					<label><b>Password</b></label>
-					<input type="password" placeholder="Enter Password" name="psw" required>
+				<!-- Button to open the modal login form -->
 
-					<button type="submit">Login</button>
-					<input type="checkbox" checked="checked"> Remember me
+
+				<!-- The Modal participant -->
+				<div id="id03" class="modal">
+					<span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+					<div id="id03" class="modalutilisateur">
+
+						<h1>Ajouter une dépense</h1>
+
+						<!---Formulaire de contact-->
+
+						<form name="ajoutUtilisateur" ng-submit="soumission(ajoutUtilisateur.$valid)">
+							<div class="form-group">
+								<label for="participant">Participant :</label>
+								<input type="text" class="form-control" id="participant" placeholder="Entrez un participant" ng-model="user.participant" required>
+							</div>
+							<br>
+							<div class="form-group">
+								<label for="groupe">Groupe :</label>
+								<input type="text" class="form-control" id="groupe" placeholder="Entrez un groupe" ng-model="user.groupe" required>
+							</div>
+							<br>
+							<div class="form-group">
+								<label>Participants : </label>
+								<label class="radio-inline">
+									<input type="radio" id="actif" value="Rouge" ng-model="user.couleur"> 1
+								</label>
+								<label class="radio-inline">
+									<input type="radio" id="membre" value="Bleu" ng-model="user.couleur"> 2
+								</label>
+								<label class="radio-inline">
+									<input type="radio" id="membre" value="Jaune" ng-model="user.couleur"> 3
+								</label>
+								<label class="radio-inline">
+									<input type="radio" id="membre" value="Vert" ng-model="user.couleur"> 4
+								</label>
+								<label class="radio-inline">
+									<input type="radio" id="membre" value="Turquoise" ng-model="user.couleur"> 5
+								</label>
+							</div>
+							<!--<div class="alert alert-danger" ng-show="message">{{message}}</div>-->
+							<br>
+							<br>
+							<button class="btn btn-default" type="submit">Ajouter</button>
+							<!--<button onclick="document.getElementById('tyf').style.display='block'" type="submit">Ajouter</button>-->
+						</form>
+
+
+						<br>
+						<br>
+						<br>
+						<button class="myModal">Modifier</button>
+						<button class="myModal">Enregistrer</button>
+
+					</div>
+
 				</div>
-				<div class="container" style="background-color:#f1f1f1">
-					<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-					<span class="psw">Forgot <a href="#">password?</a></span>
-				</div>
-			</form>-->
-			</div>
-
-
-
-
-
-
-
-
-			<!---MODAL--->
-			<!--<button type="button" onclick="document.getElementById('utilisateur')">
-			Click me to display Date and Time.</button>-->
-
-			<!--<div class="bouton">
-			<button class="myModal">Ajouter des participants</button>
-			
-			<div id="utilisateur" ng-controller="Controleur">
-				<style type="text/css">
-					.ng-invalid {
-						border-color: #B94A48;
-					}
-					
-					.ng-valid {
-						border-color: #468847;
-					}
-				</style>
-				<h1>Ajout d'utilisateurs</h1>
-				
-		<!---Formulaire de contact
-			
-				<form  name="ajoutUtilisateur" ng-submit="soumission(ajoutUtilisateur.$valid)">
-					<div class="form-group">
-						<label for="nom">Nom :</label>
-						<input type="text" class="form-control" id="nom" placeholder="Entrez le nom" ng-model="user.nom" required>
-					</div>
-					<div class="form-group">
-						<label for="prenom">Prénom :</label>
-						<input type="text" class="form-control" id="prenom" placeholder="Entrez le prénom" ng-model="user.prenom" required>
-					</div>
-					<div class="form-group">
-						<label>Rôle : </label>
-						<label class="radio-inline">
-							<input type="radio" id="actif" value="Actif" ng-model="user.role"> Actif
-						</label>
-						<label class="radio-inline">
-							<input type="radio" id="membre" value="Membre" ng-model="user.role"> Membre
-						</label>
-					</div>
-					<div class="alert alert-danger" ng-show="message">{{message}}</div>
-					<button class="btn btn-default" type="submit">Ajouter</button>
-				</form>-->
-
-			<!---Tableau		
-				<table class="table table-bordered">
-					<caption>Utilisateurs</caption>
-					<tr>
-						<th>Nom</th>
-
-						<th>Prénom</th>
-						<th>Rôle</th>
-					</tr>
-					<tr ng-repeat="utilisateur in utilisateurs">
-						<td>{{utilisateur.nom | uppercase}}</td>
-						<td>{{utilisateur.prenom}}</td>
-						<td>{{utilisateur.role}}</td>
-					</tr>
-				</table>-->
-
-
-		</div>
 	</footer>
 
 </body>
